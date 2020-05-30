@@ -2,6 +2,6 @@
   "csharpsortusings.sort.usings.splitGroups": false,
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
-  "omnisharp.defaultLaunchSolution": "ddd-seed/ddd-seed.sln",
+  "omnisharp.defaultLaunchSolution": "null",
   "omnisharp.enableRoslynAnalyzers": true
 }

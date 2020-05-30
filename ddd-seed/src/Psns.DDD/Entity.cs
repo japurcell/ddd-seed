@@ -7,34 +7,28 @@ namespace Psns.DDD
 
         public virtual int Id
         {
-            get
-            {
-                return _Id;
-            }
-            protected set
-            {
-                _Id = value;
-            }
+            get => _Id;
+            protected set => _Id = value;
         }
 
-        public bool IsTransient()
-        {
-            return this.Id == default(Int32);
-        }
+        public bool IsTransient() =>
+            Id == default;
 
         public override bool Equals(object obj)
         {
             if (obj == null || !(obj is Entity))
                 return false;
-            if (Object.ReferenceEquals(this, obj))
+            if (ReferenceEquals(this, obj))
                 return true;
-            if (this.GetType() != obj.GetType())
+            if (GetType() != obj.GetType())
                 return false;
-            Entity item = (Entity)obj;
-            if (item.IsTransient() || this.IsTransient())
+
+            var entity = (Entity)obj;
+
+            if (entity.IsTransient() || IsTransient())
                 return false;
             else
-                return item.Id == this.Id;
+                return entity.Id == Id;
         }
 
         public override int GetHashCode()
@@ -42,7 +36,7 @@ namespace Psns.DDD
             if (!IsTransient())
             {
                 if (!_requestedHashCode.HasValue)
-                    _requestedHashCode = this.Id.GetHashCode() ^ 31;
+                    _requestedHashCode = Id.GetHashCode() ^ 31;
                 // XOR for random distribution. See:
                 // https://docs.microsoft.com/archive/blogs/ericlippert/guidelines-and-rules-for-gethashcode
                 return _requestedHashCode.Value;
@@ -50,16 +44,13 @@ namespace Psns.DDD
             else
                 return base.GetHashCode();
         }
-        public static bool operator ==(Entity left, Entity right)
-        {
-            if (Object.Equals(left, null))
-                return (Object.Equals(right, null));
-            else
-                return left.Equals(right);
-        }
-        public static bool operator !=(Entity left, Entity right)
-        {
-            return !(left == right);
-        }
+
+        public static bool operator ==(Entity left, Entity right) =>
+            Equals(left, null)
+                ? Equals(right, null)
+                : left.Equals(right);
+
+        public static bool operator !=(Entity left, Entity right) =>
+            !(left == right);
     }
 }
