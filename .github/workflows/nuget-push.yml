@@ -25,6 +25,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Pack nuget Package
-        run: dotnet pack --no-build -c Release ddd-seed/
+        run: dotnet pack -c Release ddd-seed/
       - name: Push package to nuget
         run: dotnet nuget push **/*.nupkg
