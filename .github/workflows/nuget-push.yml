@@ -13,7 +13,8 @@ jobs:
         with:
           dotnet-version: 3.1.300
           source-url: https://nuget.pkg.github.com/japurcell/index.json
-        env: NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Build with dotnet
         run: dotnet build -c Release ddd-seed/
       - name: Test with dotnet
