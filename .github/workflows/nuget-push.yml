@@ -27,5 +27,7 @@ jobs:
           dotnet-version: 3.1.300
       - name: Pack nuget Package
         run: dotnet pack -c Release ddd-seed/
+      - name: Add Github Nuget source
+        run: dotnet nuget add source https://nuget.pkg.github.com/japurcell/index.json -n github -u japurcell -p ${{secrets.GITHUB_TOKEN}}
       - name: Push package to nuget
-        run: dotnet nuget push **/*.nupkg --source "https://nuget.pkg.github.com/japurcell/index.json" --api-key "${{secrets.NUGET_DEPLOY_KEY}}" --interactive --skip-duplicate
+        run: dotnet nuget push **/*.nupkg --source "github" --skip-duplicate
