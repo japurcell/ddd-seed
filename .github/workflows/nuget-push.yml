@@ -28,4 +28,4 @@ jobs:
       - name: Pack nuget Package
         run: dotnet pack -c Release ddd-seed/
       - name: Push package to nuget
-        run: dotnet nuget push **/*.nupkg --source "https://nuget.pkg.github.com/japurcell/index.json" -k "${{secrets.NUGET_DEPLOY_KEY}}"
+        run: dotnet nuget push **/*.nupkg --source "https://nuget.pkg.github.com/japurcell/index.json" --api-key "${{secrets.NUGET_DEPLOY_KEY}}" --interactive --skip-duplicate
