@@ -16,7 +16,7 @@ jobs:
       - name: Build with dotnet
         run: dotnet build -c Release ddd-seed/
       - name: Test with dotnet
-        run: dotnet Test ddd-seed/
+        run: dotnet test ddd-seed/
   deploy:
     needs: build
     runs-on: ubuntu-latest
