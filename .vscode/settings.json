@@ -2,6 +2,12 @@
   "csharpsortusings.sort.usings.splitGroups": false,
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
+  "files.associations": {
+    "*.*proj": "xml",
+    "*.props": "xml",
+    "*.targets": "xml",
+    "*.tasks": "xml"
+  },
   "omnisharp.defaultLaunchSolution": "null",
   "omnisharp.enableRoslynAnalyzers": true
 }
