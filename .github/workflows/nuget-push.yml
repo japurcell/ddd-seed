@@ -2,7 +2,7 @@ name: Nuget Package Deploy
 
 on:
   push:
-    branches: [ master ]
+    branches: [ release/** ]
 jobs:
   build:
     runs-on: ubuntu-latest
