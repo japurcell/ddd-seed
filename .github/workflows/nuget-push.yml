@@ -12,6 +12,9 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '3.1.x'
+          source-url: https://nuget.pkg.github.com/japurcell/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build with dotnet
         run: dotnet build -c Release ddd-seed/
@@ -22,28 +25,5 @@ jobs:
       - name: Pack
         run: dotnet pack -c Release -o finalpackage --no-build ddd-seed/
 
-      - name: Publish artifact
-        uses: actions/upload-artifact@master
-        with:
-          name: nupkg
-          path: finalpackage
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download package artifact
-        uses: actions/download-artifact@master
-        with:
-          name: nupkg
-
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '3.1.x'
-          source-url: https://nuget.pkg.github.com/japurcell/index.json
-        env:
-          NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Push package to nuget
-        run: dotnet nuget push nupkg/*.nupkg --skip-duplicate
+        run: dotnet nuget push **/*.nupkg --skip-duplicate
