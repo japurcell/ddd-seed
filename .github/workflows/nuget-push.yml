@@ -31,10 +31,15 @@ jobs:
         run: dotnet build -c Release ddd-seed/
 
       - name: Test with dotnet
-        run: dotnet test ddd-seed/
+        run: ./test.sh -t
 
       - name: Pack
-        run: dotnet pack -c Release -p:PackageVersion=$pv -p:AssemblyVersion=$av -p:FileVersion=$fv '-p:InformationalVersion=$iv-$sha' --no-build ddd-seed/
+        run: dotnet pack -c Release \
+              -p:PackageVersion=$pv \
+              -p:AssemblyVersion=$av \
+              -p:FileVersion=$fv \
+              '-p:InformationalVersion=$iv-$sha' \
+              --no-build ddd-seed/
         env:
           pv: ${{ steps.gitversion.outputs.nuGetVersionV2 }}
           av: ${{ steps.gitversion.outputs.assemblySemVer }}

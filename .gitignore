@@ -1,6 +1,7 @@
 # Folders
 artifacts/
 bin/
+coverage/
 obj/
 .dotnet/
 .nuget/

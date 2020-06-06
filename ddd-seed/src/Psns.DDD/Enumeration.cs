@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 
 namespace Psns.DDD
 {
-    [SuppressMessage("Microsoft.Design", "CA1036:Override methods on comparable types")]
     public abstract class Enumeration : IComparable
     {
         public int Id { get; }

@@ -1,0 +1,17 @@
+<!--
+  this is needed to share a .editorconfig between projects
+  https://docs.microsoft.com/en-us/visualstudio/code-quality/configure-fxcop-analyzers#shared-configuration
+-->
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SkipDefaultEditorConfigAsAdditionalFile>true</SkipDefaultEditorConfigAsAdditionalFile>
+  </PropertyGroup>
+  <ItemGroup Condition="Exists('..\..\..\.editorconfig')" >
+    <AdditionalFiles Include="..\..\..\.editorconfig" />
+  </ItemGroup>
+</Project>
+
+<!--
+  add this to any projects wanting to inherit the main .editorconfig
+  <Import Project="..\..\..\editorconfig.props" Condition="Exists('..\..\..\editorconfig.props')" />
+ -->
