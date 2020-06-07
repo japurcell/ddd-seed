@@ -1,7 +1,4 @@
 namespace Psns.DDD
 {
-    public interface INotification
-    {
-
-    }
+    public interface INotification { }
 }

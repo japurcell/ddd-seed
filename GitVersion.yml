@@ -16,12 +16,23 @@ branches:
     regex: ^releases?[/-]
     mode: ContinuousDelivery
     tag: ''
-    increment: Inherit
+    increment: Patch
     prevent-increment-of-merged-branch-version: true
     track-merge-target: false
     tracks-release-branches: false
     is-release-branch: true
     pre-release-weight: 1000
+  pre-release:
+    regex: ^pre-releases?[/-]
+    mode: ContinuousDeployment
+    tag: pre
+    increment: Patch
+    prevent-increment-of-merged-branch-version: true
+    track-merge-target: true
+    tracks-release-branches: false
+    is-release-branch: false
+    is-source-branch-for: [ 'master', 'release' ]
+    source-branches: [ 'feature', 'pre-release' ]
   feature:
       regex: ^features?[/-]
       mode: ContinuousDelivery
