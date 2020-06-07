@@ -1,6 +1,6 @@
 # Domain Driven Design Seedwork
 
-![NUPKG Deploy](https://github.com/japurcell/ddd-seed/.github/workflows/nuget-push.yml/badge.svg)
+![Nuget Package Deploy](https://github.com/japurcell/ddd-seed/workflows/Nuget%20Package%20Deploy/badge.svg)
 
 Reusable base classes for your domain model
 
