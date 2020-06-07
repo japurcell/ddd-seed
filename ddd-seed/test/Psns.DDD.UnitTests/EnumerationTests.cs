@@ -55,6 +55,13 @@ namespace Psns.DDD.UnitTests
             Assert.AreEqual("Visa", CardType.Visa.ToString());
         }
 
+        [TestMethod]
+        public void ItShouldResolveFromNameOrId()
+        {
+            Assert.AreEqual(2, Enumeration.FromDisplayName<CardType>("Visa").Id);
+            Assert.AreEqual("Amex", Enumeration.FromValue<CardType>(1).Name);
+        }
+
         static CardType FindType(int id) =>
             Enumeration.GetAll<CardType>().Where(c => c.Id == id).First();
     }

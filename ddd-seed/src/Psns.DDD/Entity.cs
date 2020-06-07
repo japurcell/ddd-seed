@@ -1,14 +1,31 @@
+using System.Collections.Generic;
+
 namespace Psns.DDD
 {
     public abstract class Entity
     {
         int? _requestedHashCode;
         int _Id;
+        List<INotification>? _domainEvents;
 
         public virtual int Id
         {
             get => _Id;
             protected set => _Id = value;
+        }
+
+        public IReadOnlyCollection<INotification>? DomainEvents =>
+            _domainEvents?.AsReadOnly();
+
+        public void AddDomainEvent(INotification eventItem)
+        {
+            _domainEvents ??= new List<INotification>();
+            _domainEvents.Add(eventItem);
+        }
+
+        public void RemoveDomainEvent(INotification eventItem)
+        {
+            _domainEvents?.Remove(eventItem);
         }
 
         public bool IsTransient() =>

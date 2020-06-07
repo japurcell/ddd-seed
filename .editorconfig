@@ -44,6 +44,8 @@ dotnet_separate_import_directive_groups = false
 
 # CA supressions
 dotnet_diagnostic.CA1036.severity = none
+# Empty interfaces
+dotnet_diagnostic.CA1040.severity = none
 
 # this. preferences
 dotnet_style_qualification_for_field = false:silent
