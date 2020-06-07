@@ -16,6 +16,15 @@
         "reveal": "always",
         "panel": "shared"
       }
+    },
+    {
+      "label": "build",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}"
+      ]
     }
   ]
 }
