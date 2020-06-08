@@ -7,10 +7,11 @@
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="8.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.0" />
     <PackageReference Include="NServiceBus" Version="7.3.0" />
     <PackageReference Include="NServiceBus.Extensions.Hosting" Version="1.0.1" />
     <PackageReference Include="NServiceBus.Gateway" Version="3.1.0" />
-    <PackageReference Include="Psns.DDD" Version="1.0.6" />
+    <PackageReference Include="Psns.DDD" Version="1.0.8-pre0004" />
   </ItemGroup>
 
 
