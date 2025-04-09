@@ -1,39 +1,48 @@
 // For format details, see https://aka.ms/vscode-remote/devcontainer.json or this file's README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.117.1/containers/dotnetcore-3.1
 {
-  "name": "C# (.NET Core 3.1)",
-  "dockerFile": "Dockerfile",
-  // Set *default* container specific settings.json values on container create.
-  "settings": {
-    "terminal.integrated.shell.linux": "/bin/bash"
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/dotnet:2": {
+      "additionalVersions": "lts"
+    }
   },
-  // Add the IDs of extensions you want installed when the container is created.
-  "extensions": [
-    "editorconfig.editorconfig",
-    "jchannon.csharpextensions",
-    "k--kato.docomment",
-    "ms-dotnettools.csharp"
-  ],
-  // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  // "forwardPorts": [5000, 5001],
-  // [Optional] To reuse of your local HTTPS dev cert, first export it locally using this command:
-  //  * Windows PowerShell:
-  //     dotnet dev-certs https --trust; dotnet dev-certs https -ep "$env:USERPROFILE/.aspnet/https/aspnetapp.pfx" -p "SecurePwdGoesHere"
-  //  * macOS/Linux terminal:
-  //     dotnet dev-certs https --trust; dotnet dev-certs https -ep "${HOME}/.aspnet/https/aspnetapp.pfx" -p "SecurePwdGoesHere"
-  //
-  // Next, after running the command above, uncomment lines in the 'mounts' and 'remoteEnv' lines below,
-  // and open / rebuild the container so the settings take effect.
-  //
-  "remoteUser": "vscode",
+  "customizations": {
+    // Set *default* container specific settings.json values on container create.
+    "settings": {
+      "omnisharp.enableMsBuildLoadProjectsOnDemand": true,
+      "omnisharp.enableRoslynAnalyzers": true,
+      "omnisharp.enableEditorConfigSupport": true,
+      "omnisharp.enableImportCompletion": true
+    },
+    // Configure properties specific to VS Code.
+    "vscode": {
+      // Add the IDs of extensions you want installed when the container is created.
+      "extensions": [
+        "github.vscode-github-actions",
+        "ms-dotnettools.csdevkit",
+        "EditorConfig.EditorConfig",
+        "dbaeumer.vscode-eslint"
+      ]
+    }
+  },
   "mounts": [
-    "source=vscode-extensions,target=/home/vscode/.vscode-server/extensions,type=volume",
-    // And/or for VS Code Insiders
-    "source=vscode-insiders,target=/home/vscode/.vscode-server-insiders/extensions,type=volume",
+    // user profile
+    "source=profile,target=/home/vscode,type=volume",
+    // vscode extensions
+    "target=/vscode/.vscode-server,type=volume",
+    // bash history
+    //"source=dddseed-bashhistory,target=/commandhistory,type=volume"
+    // ssh config for git
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh/,target=/home/vscode/.ssh,type=bind,consistency=cached"
+    // personal NuGet.Config for any api keys
+    //"source=${localEnv:APPDATA}/NuGet/NuGet.config,target=/home/vscode/.nuget/NuGet/NuGet.Config,type=bind,consistency=cached"
   ],
   "remoteEnv": {
-    // "ASPNETCORE_Kestrel__Certificates__Default__Password": "SecurePwdGoesHere",
-    // "ASPNETCORE_Kestrel__Certificates__Default__Path": "/home/vscode/.aspnet/https/aspnetapp.pfx",
+    // move Nuget global packages store to a directory where user vscode has write access
+    // because the NuGet.Config mount below is mounted as readonly
+    // "NUGET_PACKAGES": "/home/vscode/.cache/nuget/packages"
   },
-  //"postCreateCommand": "sudo chown vscode dotnet"
+  //"postCreateCommand": "dotnet restore",
+  "remoteUser": "vscode"
 }

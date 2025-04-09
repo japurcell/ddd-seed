@@ -1,2 +1,2 @@
 @ECHO OFF
-dotnet build ddd-seed\
+dotnet build src\ddd-seed\

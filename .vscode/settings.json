@@ -8,6 +8,6 @@
     "*.targets": "xml",
     "*.tasks": "xml"
   },
-  "omnisharp.defaultLaunchSolution": "null",
-  "omnisharp.enableRoslynAnalyzers": true
+  "omnisharp.enableRoslynAnalyzers": true,
+  "dotnet.defaultSolution": "null"
 }
