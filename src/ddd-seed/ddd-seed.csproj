@@ -3,7 +3,6 @@
   <PropertyGroup>
     <Version>1.0.0</Version>
     <Authors>jpurcell</Authors>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <GitVersion_ToolArgments>$(GitVersion_ToolArgments) -updateprojectfiles</GitVersion_ToolArgments>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
