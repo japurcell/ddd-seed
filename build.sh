@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-dotnet build ddd-seed/
+dotnet build src/ddd-seed/

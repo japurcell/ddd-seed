@@ -30,10 +30,10 @@ Description:
 _test()
 {
     dotnet test \
-        ddd-seed/test/Psns.DDD.UnitTests/Psns.DDD.UnitTests.csproj \
+        test/ddd-seed.UnitTests/ddd-seed.UnitTests.csproj \
         /p:CollectCoverage=true \
         /p:CoverletOutputFormat=opencover \
-        /p:CoverletOutput=../../../coverage/
+        /p:CoverletOutput=../../coverage/
 }
 
 _gen_report()

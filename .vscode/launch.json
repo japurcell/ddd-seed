@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/ddd-seed/test/Psns.DDD.UnitTests/bin/Debug/netcoreapp3.1/Psns.DDD.UnitTests.dll",
+            "program": "${workspaceFolder}/test/ddd-seed.UnitTests/bin/Debug/net9.0/ddd-seed.UnitTests.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/ddd-seed/test/Psns.DDD.UnitTests",
+            "cwd": "${workspaceFolder}/test/ddd-seed.UnitTests",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
