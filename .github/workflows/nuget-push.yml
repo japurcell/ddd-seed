@@ -33,7 +33,7 @@ jobs:
           NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build with dotnet
-        run: dotnet build -c Release ddd-seed/
+        run: dotnet build -c Release src/ddd-seed/
 
       - name: Test with dotnet
         run: ./test.sh -t
@@ -46,7 +46,7 @@ jobs:
           -p:AssemblyVersion=$av \
           -p:FileVersion=$fv \
           '-p:InformationalVersion=$iv-$sha' \
-          --no-build ddd-seed/
+          --no-build src/ddd-seed/
         env:
           pv: ${{ steps.gitversion.outputs.semVer }}
           av: ${{ steps.gitversion.outputs.assemblySemVer }}
