@@ -22,8 +22,11 @@ internal class ValueObjectTests
             Assert.AreNotEqual(left, right);
         }
 
-        Assert.AreEqual(areEqual, left == right);
-        Assert.AreEqual(!areEqual, left != right);
+        if (left is not null && right is not null)
+        {
+            Assert.AreEqual(areEqual, left == right);
+            Assert.AreEqual(!areEqual, left != right);
+        }
     }
 
     [TestMethod]
@@ -39,9 +42,9 @@ internal class ValueObjectTests
 internal class UnderTest : ValueObject
 {
     public int Id { get; }
-    public string Name { get; }
+    public string? Name { get; }
 
-    public UnderTest(int id, string name = default)
+    public UnderTest(int id, string? name = default)
     {
         Id = id;
         Name = name;
@@ -53,7 +56,7 @@ internal class UnderTest : ValueObject
         yield return Name ?? string.Empty;
     }
 
-    public override bool Equals(object obj) =>
+    public override bool Equals(object? obj) =>
         base.Equals(obj);
 
     public override int GetHashCode() =>

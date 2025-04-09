@@ -5,6 +5,7 @@
     <DebugSymbols>true</DebugSymbols>
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
     <TargetFrameworks>net9.0</TargetFrameworks>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
   </PropertyGroup>

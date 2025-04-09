@@ -3,7 +3,6 @@
 
   <PropertyGroup>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <Nullable>enable</Nullable>
     <PublishTrimmed>true</PublishTrimmed>
     <TargetFrameworks>$(TargetFrameworks);net9.0;net8.0;net6.0</TargetFrameworks>
     <TrimMode>full</TrimMode>

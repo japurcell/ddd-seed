@@ -515,3 +515,5 @@ dotnet_naming_style.pascal_case_style.capitalization = pascal_case
 dotnet_diagnostic.CA1812.severity = none
 # CA1852: Seal internal types
 dotnet_diagnostic.CA1852.severity = none
+# CA2007: Do not directly await a Task
+dotnet_diagnostic.CA2007.severity = none

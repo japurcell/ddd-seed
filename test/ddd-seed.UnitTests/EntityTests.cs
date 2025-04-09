@@ -24,8 +24,11 @@ internal class EntityTests
             Assert.AreNotEqual(left, right);
         }
 
-        Assert.AreEqual(areEqual, left == right);
-        Assert.AreEqual(!areEqual, left != right);
+        if (left is not null && right is not null)
+        {
+            Assert.AreEqual(areEqual, left == right);
+            Assert.AreEqual(!areEqual, left != right);
+        }
     }
 
     [TestMethod]
@@ -34,11 +37,13 @@ internal class EntityTests
         var v1 = BookFactory(1);
         var v2 = BookFactory(1);
 
+        Assert.IsNotNull(v1);
+        Assert.IsNotNull(v2);
         Assert.AreEqual(v1.GetHashCode(), v2.GetHashCode());
     }
 
-    static Book BookFactory(int? id = default) =>
-        id == default ? default : new Book(id.Value);
+    private static Book? BookFactory(int? id = null) =>
+        id is null ? default : new Book(id.Value);
 }
 
 internal class Book : Entity

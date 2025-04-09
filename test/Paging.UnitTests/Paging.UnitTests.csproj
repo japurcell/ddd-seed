@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\ddd-seed\ddd-seed.csproj" />
+    <ProjectReference Include="..\..\src\Paging\Paging.csproj" />
   </ItemGroup>
 
 </Project>
