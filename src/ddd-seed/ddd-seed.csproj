@@ -3,10 +3,15 @@
   <PropertyGroup>
     <Version>1.0.0</Version>
     <Authors>jpurcell</Authors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GitVersion_ToolArgments>$(GitVersion_ToolArgments) -updateprojectfiles</GitVersion_ToolArgments>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageTags>Domain-Driven-Design</PackageTags>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <RepositoryUrl>https://github.com/japurcell/ddd-seed</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
     <Title>Domain Driven Design Seedwork</Title>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -14,6 +19,7 @@
 
   <ItemGroup>
     <None Include="../../LICENSE.md" Pack="true" PackagePath="$(PackageLicenseFile)"/>
+    <None Include="../../README.md" Pack="true" PackagePath="$(PackageReadmeFile)"/>
   </ItemGroup>
 
 </Project>
