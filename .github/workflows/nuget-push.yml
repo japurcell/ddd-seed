@@ -28,14 +28,11 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '9.0.x'
-          source-url: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
-        env:
-          NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build with dotnet
+      - name: Build
         run: dotnet build -c Release src/ddd-seed/
 
-      - name: Test with dotnet
+      - name: Test
         run: ./test.sh -t
 
       - name: Pack
@@ -56,4 +53,8 @@ jobs:
 
       - name: Push package to nuget
         if: ${{ startsWith(github.ref, 'refs/heads/pre-release') || startsWith(github.ref, 'refs/heads/release') }}
-        run: dotnet nuget push **/*.nupkg --skip-duplicate
+        run: |
+          dotnet nuget push **/*.nupkg \
+            --skip-duplicate \
+            --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json \
+            --api-key ${{ secrets.GITHUB_TOKEN }}
